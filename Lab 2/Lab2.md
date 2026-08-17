@@ -249,6 +249,22 @@ No manual selection of context required
 
 ![](media/media/image1b.png){width="6.5in" height="3.53125in"}
 
+## Exercise 4: The Cowork Advantage
+
+## Task 1: Launch a Cowork Session
+
+1. Navigate to +++https://m365.cloud.microsoft/chat/+++ and select Cowork from the left pane.
+
+2. Start a new Cowork session and paste the following prompt:
+
++++Using the Zava QBR Sales Q2.xlsx, Zava QBR Template.docx, and the executive summary and presentation we've already created in the Zava Site, do the following: 1) Verify the presentation's numbers match the latest Excel analysis, 2) Draft a leadership summary email highlighting top 3 risks and top 3 opportunities, 3) Suggest a QBR readiness checklist for this week's Teams meeting.+++
+
+<img width="1440" height="666" alt="Screenshot 2026-08-15 at 4 46 01 PM" src="https://github.com/user-attachments/assets/af0b484d-898a-4bd2-9969-0af740d4c91d" />
+
+3. Expected Outcome:
+
+<img width="1214" height="812" alt="Screenshot 2026-08-15 at 4 48 34 PM" src="https://github.com/user-attachments/assets/b860d935-e922-4c84-9c73-1b2e4fbba251" />
+
 ## Key Takeaways
 
 After completing this lab, participants will understand how ZAVA Retail
@@ -273,3 +289,5 @@ transforms QBR preparation from:
 - Teams as collaboration + orchestration hub
 
 - Multi-agent reasoning with validation loops
+
+- Cowork pulls context from all three previously created artifacts without you re-uploading or re-explaining them (Work IQ continuity)
