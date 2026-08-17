@@ -177,7 +177,7 @@ height="6.5in"}
     ![](media/media/image1f.png){width="6.25in"
     height="2.8541666666666665in"}
 
-3.  Select  **Files upload**. Choose  **IT Support.xlsx**  from 
+3.  Select  **Files upload**. Choose  **Support Ticket.xlsx**  from 
     **C:\\LabFiles\\Labfiles**.
 
 ![](media/media/image20.png){width="6.5in"
