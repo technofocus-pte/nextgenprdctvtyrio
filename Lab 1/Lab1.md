@@ -1,4 +1,4 @@
-# Build an Autonomous Multi-Agent Email Operations Assistant Using Microsoft 365 Copilot Workflows Agent (Frontier) and Work IQ
+# Lab 1- Design Intelligent Workflow Agent: Smart email triage & productivity insights with Copilot
 
 Duration: 30 minutes
 
