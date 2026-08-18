@@ -1,4 +1,4 @@
-# Lab 2 -- Microsoft 365 Copilot Chat: AI Powered Digital Coworker in Action
+# Lab 2 -- Copilot Cowork: AI Powered Digital Coworker in Action
 
 Lab Duration: 30 minutes
 
