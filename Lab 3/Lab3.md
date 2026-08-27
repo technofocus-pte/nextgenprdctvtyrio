@@ -71,7 +71,7 @@ and configure it inside Microsoft 365 Copilot.
 ### Task 1: Open Agent Builder
 
 1.  Navigate to
-    +++https://www.microsoft.com/en-in/microsoft-365-copilot+++ in your
+    +++(https://copilotstudio.microsoft.com/)+++ in your
     browser. Sign in with your credentials.\
     ![](media/media/image.png){width="6.25in" height="4.5in"}
 
