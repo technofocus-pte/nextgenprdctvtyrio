@@ -527,24 +527,3 @@ By the end of this lab, you should be able to:
   regions while preserving the original objective and KPIs
 
 - Prepare a leadership-ready executive approval package
-
-# **Test checklist – all NEW items**
-
-Mark each item Pass / Fail / Not available in tenant, and note the exact
-UI label you saw. Delete this section before publishing.
-
-| **ID**    | **Where**           | **What to test**                                              | **Status**  | **Expected result**                                                                     | **Result** |
-|-----------|---------------------|---------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|------------|
-| **L1-01** | Key Personas        | Prerequisites: licence and Copilot Studio / credits access    | GA          | Learner can open Copilot Studio and has credits; otherwise Exercise 7 is skipped        |            |
-| **L1-02** | Exercise 1 › Task 1 | Redirect to copilot.cloud.microsoft works                     | GA          | Chat loads after redirect with no blocked-domain error                                  |            |
-| **L1-03** | Exercise 1 › Task 2 | Prompt Optimizer available and safe to use                    | GA          | Optimizer suggests edits; nine sections preserved if accepted                           |            |
-| **L1-04** | Exercise 1 › Task 3 | Knowledge UI: Attachments label and extra source types        | GA          | Files upload; SharePoint/Teams options appear                                           |            |
-| **L1-05** | Exercise 1 › Task 4 | Capabilities default-on; Web search and file-creation present | GA          | Create images and Web search on by default; file-creation capability found              |            |
-| **L1-06** | Exercise 2 › Task 2 | Agent creates a downloadable Word file                        | GA          | Word file card appears with brief content and nine sections                             |            |
-| **L1-07** | Exercise 3 › Task 3 | Create and use a skill in Agent Builder                       | Rolling out | Skill saved; re-running the SMS prompt follows its character-limit rules                |            |
-| **L1-08** | Exercise 6 › Task 2 | Executive package as Word file; Office editing in Copilot     | GA          | Downloadable Word file with all six sections; edit-in-Copilot opens if tenant has it    |            |
-| **L1-09** | Exercise 7          | Exercise 7 end to end                                         | Preview     | Agent copied, approval flow pauses and resumes, evaluation runs                         |            |
-| **L1-10** | Exercise 7 › Task 1 | Copy agent to Copilot Studio                                  | GA          | Agent appears in Copilot Studio with instructions and knowledge intact                  |            |
-| **L1-11** | Exercise 7 › Task 2 | Request for information action pauses and resumes flow        | Preview     | Reviewer gets Outlook request; agent resumes with Decision and Comments                 |            |
-| **L1-12** | Exercise 7 › Task 3 | Evaluation test set, multi-turn test, version comparison      | GA          | Test set runs; pass rate shown; removing a required section causes a visible regression |            |
-| **L1-13** | Exercise 7 › Task 4 | Create and export a skill                                     | Preview     | Skill created, attached to the agent, exported as a Markdown file                       |            |
