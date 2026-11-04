@@ -1,0 +1,85 @@
+ZAVA RETAIL – FINANCE TEAM WEEKLY MEETING
+Date: Tuesday, October 27, 2026
+Time: 10:00 – 11:00 AM (Central)
+Location: Microsoft Teams
+Chair: Robin Kline, Finance Manager
+Attendees: Robin Kline, Amari Rivera, Quincy Brooks, Miguel Reyes, Eric Solomon, Financial Analyst (joined 10:10)
+Notes taken informally during the call – not reviewed by attendees.
+
+----------------------------------------------------------------
+1. Q3 CLOSE REVIEW
+----------------------------------------------------------------
+- Robin opened by saying Q3 close finished on working day 6, one day later than target. Two late accruals (freight and a marketing agency invoice) caused the delay.
+- Amari said the intercompany reconciliation between the Midwest clusters and the central warehouse still has a $42K unexplained difference. She thinks it is a timing issue on transfers but has not confirmed it.
+- Eric mentioned that two expense reports were posted without receipts. He will follow up with the submitters.
+- Quincy asked whether Q4 can use a "soft close" on working day 4. Robin liked the idea but wants to see what is needed to make it work first.
+- DECISION: Pilot a soft close on working day 4 for Q4, with a hard close on working day 6 as the backstop.
+
+----------------------------------------------------------------
+2. ZAVA HOME PRODUCT LINE – COGS ESTIMATES
+----------------------------------------------------------------
+- Miguel summarized the COGS file received from Merchandising (26 lines, 7 categories). He said it is "mostly there" but he has found some gaps: freight missing on at least one cookware item, one product still shows TBD for unit cost, and a duplicate SKU with two different costs.
+- Robin said the target gross margin floor for the launch is 55% and she does not want anything priced below that without sign-off.
+- Quincy pointed out one Italian lighting item whose total COGS looks too high compared with the components. Someone should recalculate.
+- Amari noted that at least one product is priced in EUR and she is not sure whether it was converted to USD.
+- Eric asked about import duty rates. Some look like percentages and one looks like it was typed as a whole number (7 instead of 7%). Needs checking against the tariff schedule.
+- The Financial Analyst agreed to review the whole file and prepare a data-quality summary for leadership.
+- DECISION: Hold launch pricing approval until the COGS data is validated and Merchandising confirms the missing values.
+- DECISION: Margin review for any item below 55% will go to Robin before the pricing meeting.
+
+----------------------------------------------------------------
+3. RELECLOUD ACQUISITION – PREPARATION
+----------------------------------------------------------------
+- Robin said the executive team wants a recommendation on the potential acquisition of Relecloud, Ltd. by the end of November. She has received the Relecloud business perspective document and shared it with the team.
+- Headline points she called out: roughly $139M ARR, strong growth, EBITDA turning positive two years ago, but high customer concentration and a proposed price of about $1.05B.
+- Quincy will build the valuation model with three scenarios: base, upside and downside. He will need the peer multiples.
+- Eric will prepare a due diligence checklist covering legal, compliance, data privacy and the change-of-control clause in the Relecloud term loan.
+- Miguel will look at synergy assumptions and the integration timeline. He asked whether the $9M cost synergy estimate in the document is realistic. Robin said to challenge it.
+- Amari raised that the integration costs ($18M) are not yet reflected in any cash forecast. She will add a placeholder.
+- Robin asked the Financial Analyst to produce a summary and an expanded analysis of the Relecloud document for the executive team.
+- DECISION: Use three scenarios (base, upside, downside) in the valuation and present a recommendation, not just numbers.
+- OPEN QUESTION: Do we want to propose a lower upfront price with a larger earn-out? Robin will raise this with the CFO.
+
+----------------------------------------------------------------
+4. TRAVEL AND EXPENSE POLICY
+----------------------------------------------------------------
+- Eric said the current policy is nearly three years old and does not cover ride-share, conference fees or home-office stipends.
+- Several store managers have asked what is reimbursable when attending the regional training sessions.
+- Robin said she wants a short, clear policy rather than a long one.
+- DECISION: Eric will draft updated policy language and circulate it for review.
+
+----------------------------------------------------------------
+5. FY27 BUDGET PLANNING
+----------------------------------------------------------------
+- Quincy said the budget template is ready except for the headcount tab.
+- Robin reminded everyone that departments will need clear guidance on how to account for the RMS and ERP migration costs.
+- Amari said she will need the final ERP implementation invoice schedule from IT.
+- No decisions made; timeline to be confirmed.
+
+----------------------------------------------------------------
+6. ANY OTHER BUSINESS
+----------------------------------------------------------------
+- Miguel is out of office November 16–20.
+- Robin asked everyone to complete the mandatory compliance training before the end of the month.
+- Next meeting: Tuesday, November 3, 2026, 10:00 AM.
+
+----------------------------------------------------------------
+ACTION ITEMS (as recorded during the call)
+----------------------------------------------------------------
+- Amari – resolve the $42K intercompany difference. Deadline: before Q3 reporting package goes out (Friday).
+- Amari – add integration cost placeholder to the cash forecast.
+- Amari – confirm EUR conversion for the framed wall art item and get the ERP invoice schedule from IT.
+- Eric – follow up on the two expense reports without receipts.
+- Eric – draft the updated travel and expense policy. Target: November 13.
+- Eric – prepare the Relecloud due diligence checklist, including the change-of-control clause review.
+- Eric – verify import duty rates against the tariff schedule.
+- Quincy – build the three-scenario valuation model for Relecloud. Needs peer multiples first.
+- Quincy – send the FY27 budget template. Target: November 6.
+- Quincy – recalculate the total COGS for the Italian floor lamp.
+- Miguel – chase Merchandising for the missing freight, the TBD unit cost and the duplicate SKU. Target: this week.
+- Miguel – review synergy assumptions and integration timeline for Relecloud.
+- Financial Analyst – review the Zava Home COGS file and write a data-quality summary.
+- Financial Analyst – summarize and expand the Relecloud business perspective for the executive team.
+- Robin – raise the earn-out structure question with the CFO.
+- Robin – approve or reject any Zava Home item with margin below 55%.
+- Everyone – complete compliance training by October 31.
