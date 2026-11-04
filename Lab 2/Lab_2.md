@@ -2,10 +2,6 @@
 
 **Estimated duration: 60 mins**
 
-Corrections made in this lab: Exercise 1 step for opening Cowork updated for the GA navigation; “Verify the Meeting” now reads “Meetings”; stray double period and missing final period fixed. All eight-meeting and conflict prompts are unchanged. Screenshots ./media/image31.png and ./media/image32.png are marked at their original position.
-
-*Statuses come from Microsoft Learn (Copilot Studio What’s new, 22 Oct 2026) and Microsoft Message Center/roundups; UI labels can differ by tenant, so record the exact label you see in the Result column.*
-
 # **Scenario**
 
 Zava Retail is a growing SMB omnichannel retailer with 12 physical stores and a successful online business. To support its continued growth, the company is preparing to open two new stores in neighbouring cities during the next quarter — its first regional expansion.
