@@ -2,9 +2,6 @@
 
 **Duration: 50 minutes**
 
-Corrections made in this lab: sign-in URL changed to the Copilot Chat address; empty Agent Description filled in; Derek’s plan prompt wrapped in +++ like the others; “Review the output” checks added for Exercise 3. Exercises 5, 6, and 7 are new and fill gaps between the stated objectives and the original steps; Exercise 8 (content safety) was added on request.
-
-*Statuses come from Microsoft Learn (Copilot Studio What’s new, 22 Oct 2026) and Microsoft Message Center/roundups; UI labels can differ by tenant, so record the exact label you see in the Result column.*
 
 # **Lab Objective**
 
