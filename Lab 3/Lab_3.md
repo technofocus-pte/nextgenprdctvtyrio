@@ -1,4 +1,4 @@
-**Lab 3 – Build a Workforce Upskilling Agent with Microsoft 365 Copilot**
+# **Lab 3 – Build a Workforce Upskilling Agent with Microsoft 365 Copilot**
 
 **Duration: 50 minutes**
 
