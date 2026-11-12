@@ -1,4 +1,4 @@
-**Build an Instruction-Driven Benefits Agent in Copilot Studio**
+# Lab 6: **Build an Instruction-Driven Benefits Agent in Copilot Studio**
 
 Lab Duration: 60 minutes
 
