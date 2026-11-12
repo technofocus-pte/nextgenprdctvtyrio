@@ -1,3 +1,4 @@
+# Lab 5: **Extend Microsoft 365 Copilot Chat with a HR Agent built using Microsoft Copilot Studio**
 **Duration:** 30 minutes
 
 # Objective & Scenario
