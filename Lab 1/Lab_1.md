@@ -1,6 +1,6 @@
-**Build an Enterprise Marketing Operations Agent with Microsoft 365 Copilot**
+# **Build an Enterprise Marketing Operations Agent with Microsoft Copilot**
 
-**Estimated duration: 40 minutes**
+**Estimated duration: 20 minutes**
 
 # **Scenario**
 
@@ -10,11 +10,11 @@ Every campaign brief looks different depending on who wrote it. Different people
 
 As Marketing Operations Lead, Priya Nair is responsible for how campaigns move from idea to execution to executive sign-off. With a Summer Clearance campaign due for leadership approval by the end of the week, Priya needs a faster, more consistent way to plan the campaign, produce channel-ready assets, adapt it for different audiences and regions, and package it for executive review.
 
-To solve this, Zava Retail has adopted Microsoft 365 Copilot Chat. Priya will build a reusable custom agent — the Zava Retail Marketing Advisor — that plans campaigns to a consistent enterprise structure, generates creative assets, adapts content for different audiences and channels, and prepares executive-ready summaries.
+To solve this, Zava Retail has adopted Microsoft Copilot Chat. Priya will build a reusable custom agent — the Zava Retail Marketing Advisor — that plans campaigns to a consistent enterprise structure, generates creative assets, adapts content for different audiences and channels, and prepares executive-ready summaries.
 
 # **Objectives**
 
-During this lab, you will use Microsoft 365 Copilot Chat to:
+During this lab, you will use Microsoft Copilot Chat to:
 
 - Create a custom Copilot agent — build a dedicated marketing operations assistant from scratch with a defined name and purpose.
 
@@ -40,13 +40,13 @@ Regional Store Directors – North, South, Urban, Rural: Require the same campai
 
 # **Exercise 1: Create and Configure the Marketing Operations Agent**
 
-In this exercise, you will sign in to Microsoft 365 Copilot Chat as Priya Nair and create a new custom agent from scratch. This exercise gets your environment ready for the rest of the lab.
+In this exercise, you will sign in to Microsoft Copilot Chat as Priya Nair and create a new custom agent from scratch. This exercise gets your environment ready for the rest of the lab.
 
-## **Task 1 – Sign In to Microsoft 365 Copilot Chat**
+## **Task 1 – Sign In to Microsoft Copilot Chat**
 
 1.  Open a web browser and navigate to +++https://m365.cloud.microsoft/chat/+++.
 
-2.  Sign in with your Microsoft 365 Copilot account credentials.
+2.  Sign in with your Microsoft Copilot account credentials.
 
 > ![Screenshot 1](images/image01.png)
 
@@ -402,11 +402,11 @@ David Kim has one rule for Friday’s leadership review: every campaign pitch mu
 
 # **Summary**
 
-In this lab, you used Microsoft 365 Copilot Chat to build a custom marketing operations agent for Zava Retail — configuring enterprise instructions that enforce a consistent campaign structure, generating a full campaign brief and multi-channel creative assets, refining the campaign for a premium loyalty audience, adapting it across four store regions, and packaging it for executive approval, before publishing it for the wider marketing team.
+In this lab, you used Microsoft Copilot Chat to build a custom marketing operations agent for Zava Retail — configuring enterprise instructions that enforce a consistent campaign structure, generating a full campaign brief and multi-channel creative assets, refining the campaign for a premium loyalty audience, adapting it across four store regions, and packaging it for executive approval, before publishing it for the wider marketing team.
 
 By the end of this lab, you should be able to:
 
-- Create a custom Microsoft 365 Copilot Chat agent and configure enterprise-grade instructions
+- Create a custom Microsoft Copilot Chat agent and configure enterprise-grade instructions
 
 - Generate a structured campaign brief and creative assets, including generated images
 
