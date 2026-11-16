@@ -1,6 +1,6 @@
 # Lab 2: **Streamline Zava Retail Calendar Management with Copilot Cowork**
 
-**Estimated duration: 60 mins**
+**Estimated duration: 20 mins**
 
 # **Scenario**
 
