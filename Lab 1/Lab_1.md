@@ -1,6 +1,6 @@
 # Lab 1: **Build an Enterprise Marketing Operations Agent with Microsoft Copilot**
 
-**Estimated duration: 40 minutes**
+**Estimated duration: 20 minutes**
 
 # **Scenario**
 
