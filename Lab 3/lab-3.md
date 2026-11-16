@@ -6,7 +6,7 @@
 
 By the end of this lab, you will be able to:
 
-- Build a custom Workforce Upskilling Agent using Microsoft 365 Copilot Agent Builder
+- Build a custom Workforce Upskilling Agent using Microsoft Copilot Agent Builder
 
 - Configure agent instructions aligned to retail workforce transformation goals
 
@@ -54,7 +54,7 @@ Derek Okonkwo (Operations Coordinator) – Low RMS adoption despite extensive le
 
 # **Exercise 1: Creating the Workforce Upskilling Agent**
 
-Before the agent can support workforce development, you must first build and configure it inside Microsoft 365 Copilot.
+Before the agent can support workforce development, you must first build and configure it inside Microsoft Copilot.
 
 ## **Task 1: Open Agent Builder**
 
@@ -428,4 +428,4 @@ The Workforce Coach discusses real employees, so it needs guardrails against bia
 
 # **Lab Summary**
 
-In this lab, you built a custom Workforce Upskilling Agent in Microsoft 365 Copilot designed to support retail workforce transformation. You configured the agent’s behavior to align with workforce development goals, grounded it in organizational context for more relevant and accurate responses, and used operational signals to diagnose workforce skill gaps. The lab also guided you through generating personalized learning plans tailored to employee needs, refining agent responses through prompt engineering for improved effectiveness, and producing workforce readiness briefings to support decision-making and training strategy. Optional exercises added coaching role-plays, a Word briefing, an evaluation and data-source extension in Copilot Studio, and content safety checks.
+In this lab, you built a custom Workforce Upskilling Agent in Microsoft Copilot designed to support retail workforce transformation. You configured the agent’s behavior to align with workforce development goals, grounded it in organizational context for more relevant and accurate responses, and used operational signals to diagnose workforce skill gaps. The lab also guided you through generating personalized learning plans tailored to employee needs, refining agent responses through prompt engineering for improved effectiveness, and producing workforce readiness briefings to support decision-making and training strategy. Optional exercises added coaching role-plays, a Word briefing, an evaluation and data-source extension in Copilot Studio, and content safety checks.
