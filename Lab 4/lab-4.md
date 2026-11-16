@@ -1,6 +1,6 @@
 # Lab 4: Implement prompt action for a quiz generation agent’s topic
 
-Estimated duration - 40 minutes
+Estimated duration - 30 minutes
 
 **Objective:**
 
