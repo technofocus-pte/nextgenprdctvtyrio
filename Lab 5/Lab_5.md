@@ -1,4 +1,4 @@
-# Lab 5: **Extend Microsoft Copilot Chat with a HR Agent built using Microsoft Copilot Studio**
+# Lab 5: **Optimize financial reporting and acquisition modeling with Microsoft 365 Copilot Finance Agent *
 **Duration:** 30 minutes
 
 # Objective & Scenario
