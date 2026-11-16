@@ -1,4 +1,4 @@
-**Streamline Zava Retail Calendar Management with Microsoft 365 Copilot Cowork**
+**Streamline Zava Retail Calendar Management with Microsoft Copilot Cowork**
 
 **Estimated duration: 60 mins**
 
@@ -22,11 +22,11 @@ Current challenges include:
 
 - Difficulty finding suitable meeting times for key stakeholders
 
-To help keep the expansion on track, Zava Retail has adopted Microsoft 365 Copilot Cowork. Alex will use Cowork as an AI-powered executive assistant to manage the calendar, resolve scheduling conflicts, intelligently coordinate meetings, and protect time for high-value strategic work.
+To help keep the expansion on track, Zava Retail has adopted Microsoft Copilot Cowork. Alex will use Cowork as an AI-powered executive assistant to manage the calendar, resolve scheduling conflicts, intelligently coordinate meetings, and protect time for high-value strategic work.
 
 # **Objectives**
 
-During this lab, you will use Microsoft 365 Copilot Cowork to:
+During this lab, you will use Microsoft Copilot Cowork to:
 
 - Detect and resolve calendar conflicts — identify overlapping meetings and back-to-back scheduling, and act on AI-recommended fixes.
 
@@ -48,15 +48,15 @@ Tom Bradley – Store Operations Manager: Frequently schedules operational meeti
 
 Lisa Chen – Procurement & Supply Chain Manager: Works closely with Alex to coordinate supplier onboarding and inventory deliveries. Their weekly project sync must be scheduled while respecting both calendars and meeting constraints.
 
-> **\[NEW · GA · L2-01\]** Prerequisites: Cowork is generally available (since June 2026) but is billed by usage. The lab user needs a Microsoft 365 Copilot licence and access to Copilot Credits (a spending policy set by the admin). If Cowork shows a request-access message instead of a prompt box, ask the admin before continuing. Also allow the whole \*.cloud.Microsoft domain.
+> **\[NEW · GA · L2-01\]** Prerequisites: Cowork is generally available (since June 2026) but is billed by usage. The lab user needs a Microsoft Copilot licence and access to Copilot Credits (a spending policy set by the admin). If Cowork shows a request-access message instead of a prompt box, ask the admin before continuing. Also allow the whole \*.cloud.Microsoft domain.
 
 # **Exercise 1: Access Cowork Agent**
 
-In this exercise, you need to sign in to Microsoft 365 Copilot as Alex Morgan and turn on the Cowork agent. This exercise gets your environment ready for the rest of the lab.
+In this exercise, you need to sign in to Microsoft Copilot as Alex Morgan and turn on the Cowork agent. This exercise gets your environment ready for the rest of the lab.
 
 1.  Open a web browser and navigate to +++https://m365.cloud.microsoft/chat/+++
 
-2.  Sign in with your Microsoft 365 Copilot account credentials.
+2.  Sign in with your Microsoft Copilot account credentials.
 
 > <img src="images/image_001.png" style="width:6.04167in;height:5.67708in" />
 
@@ -685,7 +685,7 @@ Enter your lab totals into the estimator to see what one learner’s session cos
 
 # **Summary**
 
-In this lab, you used Microsoft 365 Copilot Cowork as an AI-powered executive assistant to manage Alex Morgan’s calendar during a store expansion program — detecting and resolving scheduling conflicts, scheduling a meeting using email context, and setting up standing rules to protect focus time, all with your approval at each step. Optionally, you saved a reusable skill, automated a recurring scan and reviewed credit use.
+In this lab, you used Microsoft Copilot Cowork as an AI-powered executive assistant to manage Alex Morgan’s calendar during a store expansion program — detecting and resolving scheduling conflicts, scheduling a meeting using email context, and setting up standing rules to protect focus time, all with your approval at each step. Optionally, you saved a reusable skill, automated a recurring scan and reviewed credit use.
 
 By the end of this lab, you should be able to:
 
