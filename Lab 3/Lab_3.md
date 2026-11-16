@@ -1,6 +1,6 @@
-**Streamline Zava Retail Calendar Management with Microsoft Copilot Cowork**
+# **Streamline Zava Retail Calendar Management with Microsoft Copilot Cowork**
 
-**Estimated duration: 60 mins**
+**Estimated duration: 30 mins**
 
 # **Scenario**
 
