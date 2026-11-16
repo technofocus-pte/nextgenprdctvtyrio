@@ -1,6 +1,6 @@
-# Lab 7: **Build, Publish, and Share a Zava Retail App in Copilot Studio (Preview)**
+# Lab 7: **Build, Publish, and Share a Zava Retail App in Copilot Studio**
 
-Hands-on lab \| Zava Retail scenario \| 40 minutes
+Estimated duration - 30 minutes
 
 # **Lab overview**
 
