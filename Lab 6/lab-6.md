@@ -44,7 +44,7 @@ After you complete this lab, you will be able to:
 
 Building and testing an agent powered by the GitHub Copilot harness might consume Copilot Credits. Keep your testing to the prompts in this lab.
 
-# **Exercise 1: Prepare the guide and create the agent (10 minutes)**
+# **Exercise 1: Prepare the guide and create the agent**
 
 First you create the fictional benefits guide that the agent uses as a knowledge source. Then you create the agent and give it instructions.
 
@@ -156,7 +156,7 @@ You are the Contoso Benefits Assistant. Help Contoso employees understand compan
 
 ![](images/r_image30.png)
 
-# **Exercise 2: Add knowledge sources (10 minutes)**
+# **Exercise 2: Add knowledge sources **
 
 You add the fictional company guide and an official government website to the agent.
 
@@ -193,7 +193,7 @@ Approved information about Contoso medical plans, enrollment periods, life event
 
 A new knowledge source can take several minutes to become available. Continue to Exercise 3 while Copilot Studio processes the sources.
 
-# **Exercise 3: Configure the opening experience (7 minutes)**
+# **Exercise 3: Configure the opening experience**
 
 ## **Task 1: Set the greeting and suggested prompts**
 
@@ -221,7 +221,7 @@ Hello, I'm the Contoso Benefits Assistant. I can explain Contoso benefit program
 4.  Close the **Agent settings** dialog and Publish the agent.  
     ![](images/r_image42.png)
 
-# **Exercise 4: Test the agent (12 minutes)**
+# **Exercise 4: Test the agent**
 
 Generative responses vary in wording. For each prompt, check whether the response demonstrates the expected behaviour instead of looking for an exact sentence.
 
@@ -287,7 +287,7 @@ The initial instructions direct employees to a benefits contact for personal dec
 3.  Verify that the response explains only the approved information and directs you to the Benefits Service Center for a decision.  
     ![](images/r_image4c.png)
 
-# **Exercise 6: Stress-test the boundaries (8 minutes)**
+# **Exercise 6: Stress-test the boundaries**
 
 Now that the eligibility rule is in place, you try to make the agent break its own instructions.
 
