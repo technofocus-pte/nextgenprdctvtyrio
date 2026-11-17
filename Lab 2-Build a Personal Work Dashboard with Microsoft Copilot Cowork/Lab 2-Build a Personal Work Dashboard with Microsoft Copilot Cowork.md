@@ -1,8 +1,8 @@
-**Build a Personal Work Dashboard with Microsoft Copilot Cowork**
+## **Build a Personal Work Dashboard with Microsoft Copilot Cowork**
 
 **Estimated duration: 40 minutes**
 
-# **Overview**
+### **Overview**
 
 Modern workdays suffer from app-switching overload. You start in
 Outlook, jump to Teams, check your calendar, hop into OneDrive — and
@@ -12,7 +12,7 @@ In this lab you will use Microsoft Copilot Cowork to build a single HTML
 page that answers one question every morning: ***"What deserves my
 attention right now?"***
 
-# **What the Dashboard includes:**
+### **What the Dashboard includes:**
 
 - Header — today's date, last-refresh timestamp, and a hint that
   everything is clickable
@@ -99,7 +99,101 @@ administrator.
 Below is the complete Prompt 1. You will copy everything between the
 dashed lines and paste it into the Cowork task input.
 
-[TABLE]
+PROMPT 1 — COPY EVERYTHING BELOW THIS LINE
+Using the info here, generate a personal dashboard for me.
+[uild me a personal work dashboard as a single HTML file at output/dashboard.html.
+ 
+Gather fresh data in parallel from across my Microsoft Graph:
+Calendar — today's remaining events and the next 7 days, including response status, organizer, and online-meeting status
+ Inbox — unread, flagged, and high-importance messages from the last few days
+Teams — unread chats with last-message previews
+ 
+ OneDrive — recently modified folders in my personal drive
+ 
+Search M365 for any action-required emails (access renewals, expense reminders, training notices)
+ 
+Infer my top 5–8 active projects by clustering recurring meetings, email threads, and customer names. Surface a "Next" action for each.
+ 
+Render a single-page HTML dashboard with this layout:
+ 
+- Header: greeting with today's date, last-refresh timestamp (Pacific time), "Click any item to open it" hint
+ 
+- KPI strip (6 tiles): overdue actions, unread emails, meetings tomorrow, Teams unread, active projects, OOF this week. Color the urgent ones red, warnings amber, healthy ones green.
+ 
+- Urgent banner (red-bordered): items that need attention today
+ 
+- Tomorrow's Schedule card: every event with time chip, title, response badge, organizer, conflict markers
+ 
+- Prep Notes card: short crib sheets for meetings that need prep
+ 
+- Top Projects card: inferred projects with a "Next" line each
+ 
+- Week Calendar Load: pure CSS bar chart of meeting counts per day for the upcoming week (flex-aligned `<div>` bars with `linear-gradient` fills and inline `style="height: NN%"`)
+ 
+- Time Allocation: pure CSS doughnut chart splitting the week by category (`<div>` with `conic-gradient` background and a `::after` hole, paired with a static legend)
+ 
+- Emails Needing a Reply card: the few messages that actually want a response — filter out newsletters, alerts, external pitches
+ 
+- Long-Term Action Items card: overdue tasks, weekly deadlines, upcoming milestones
+ 
+- Training & Learning card: upcoming training sessions
+ 
+- OOF Radar card: teammates out this week & next, with a heads-up if any organize a meeting I'm attending
+ 
+- People to Follow Up With card: name + one-line context
+ 
+- Unread Teams Chats card: top chats with one-line previews
+ 
+- Recent Files in Flight card: most recently modified OneDrive folders
+ 
+- Footer: refresh schedule note
+ 
+Visual style: soft blue gradient background (#f5f7fa to #e8edf3), rounded white cards with subtle shadow, 'Segoe UI' font, Microsoft accent #0078d4, color-coded badges (green #dcfce7/166534 = accepted, amber #fef3c7/92400e = tentative, red #fee2e2/991b1b = no response or overdue, purple #ede9fe/5b21b6 = organizer). Use a 2-column grid for the main sections, 3-column for the smaller cards, collapsing to single column under 1024px.
+ 
+PORTABILITY REQUIREMENT — the file must render correctly with zero external network requests and zero JavaScript executing. No `<script src="…">` to any CDN. No Chart.js, D3, or other charting libraries. No external fonts (use the system 'Segoe UI' stack). All charts must be built from HTML + CSS only: bar chart = flex-aligned gradient `<div>` bars; doughnut = `conic-gradient` background with a `::after` pseudo-element hole. All KPI tiles must render their final value directly in the HTML — never start at `0` and rely on JS to fill in the number. Any animation or interactivity (slide-up entry, pulse dot, dark mode toggle) is allowed but must be additive: CSS-driven where possible, and any inline script must gracefully no-op if blocked (e.g. wrap `localStorage` access in `try/catch`). The dashboard will be opened in sandboxed previews, email-attachment viewers, and locked-down browsers where scripts and CDNs frequently do not run.
+ 
+Premium touches to include (all must work without JavaScript or external requests):
+ 
+- Dark mode toggle in the header (pill button with sun/moon icon, CSS-variable theming). Persist preference via `localStorage` wrapped in `try/catch` so it gracefully no-ops where storage is blocked. The page must render correctly in light mode by default even if the toggle script never runs.
+ 
+- KPI tiles render their final value directly in the HTML (e.g. `<div class="kpi-value">22</div>`). Optional polish: a CSS-only entry animation (e.g. `@keyframes` opacity/translate). Do not start the tile text at `0` and rely on JS to count it up — that breaks in any context where scripts don't execute.
+ 
+- Slide-up entrance animation on KPI tiles and cards via pure CSS `@keyframes`.
+ 
+- 3-color header gradient (#0078d4 → #00bcf2 → #5e60ce) with radial-gradient overlay highlights.
+ 
+- Pulse dot animation on the "Last refreshed" timestamp via pure CSS `@keyframes`.
+ 
+- CSS bar chart for Week Calendar Load — `<div>` columns whose heights are inline `style="height: NN%"` percentages. Fill classes: `.heavy` (red `linear-gradient` when count ≥ 7), `.light` (gray when = 2), `.normal` (blue otherwise). Number labels sit at the top of each bar in white text.
+ 
+- CSS doughnut for Time Allocation — `<div class="donut">` with `conic-gradient(...)` background, segment angles computed at build time from the percentages, and a `::after` pseudo-element using the card background color to punch out the center hole. Render the legend as static HTML next to it.
+ 
+- Project health dots next to each project name — red (hot), green (active), amber (watch), with a soft box-shadow glow.
+ 
+- Avatar initials circles on the People card (avatar-1 through avatar-5 with gradient backgrounds).
+ 
+- Decorative ⚠ watermark in the urgent banner using a `::before` pseudo-element.
+ 
+CRITICAL — every item must be clickable. Wrap every event, email, chat, file, project card, training item, action item, and person in an <a href="..." target="_blank"> anchor tag:
+ 
+- Calendar events → fetch via QueryGraph on /me/calendarView with $select including webLink; use the event's webLink
+ 
+- Emails → fetch via QueryGraph on /me/messages with $select including webLink; use the message's webLink
+ 
+- Teams chats → fetch via QueryGraph on /me/chats with $select including webUrl; use the chat's webUrl
+ 
+- OneDrive folders → use the item's webUrl
+ 
+- People → mailto:<email> for email follow-ups, or the 1:1 chat webUrl for Teams follow-ups
+ 
+- Project cards / training items without a canonical link → use an Outlook inbox search URL like https://outlook.office.com/mail/inbox?searchquery=<keyword>
+ 
+Style anchors with class names so they look like regular cards (color: inherit; text-decoration: none; display: block or flex; subtle hover background).
+ 
+Save to output/dashboard.html. After writing, confirm the file exists in output/.
+
+─────────────── End of Prompt 1 ───────────────
+
 
 ![](./media/image7.png)
 
@@ -136,7 +230,21 @@ scheduled task inside Cowork.
 
 2.  A fresh input area will appear. Copy and Paste Prompt 2.
 
-[TABLE]
+Set up a scheduled task that refreshes output/dashboard.html every weekday at :55 past the hour, from 6:55 AM through 5:55 PM Pacific. Use the same data-gathering and rendering instructions from the dashboard we just built — capture webLink/webUrl for every item so links stay clickable on every refresh.
+
+At the 9 AM run only (and no other hour), also send me an email:
+
+To: <odl_user_2270231@gpssandboxlabs100124.onmicrosoft.com>
+
+Subject: "Your Daily Work Dashboard — [today's date in M/D format]"
+
+Body: brief greeting noting the dashboard is attached, every item is clickable, and the in-session version refreshes hourly
+
+Attachment: output/dashboard.html
+
+For all other hours, refresh the file silently — no email.
+
+Name the task "Refresh work dashboard (hourly at 9 AM, email at 9 AM)".
 
 ![](./media/image12.png)
 
@@ -182,7 +290,7 @@ Now that the dashboard is built and scheduled, take a few minutes to
 explore each section. Use the guide below to understand what you are
 looking at.
 
-#################### Header & KPI Strip
+ Header & KPI Strip
 
 - The header shows your name, today's date, and the last-refreshed
   timestamp (with a pulsing dot). Click any item in any section — they
@@ -193,7 +301,7 @@ looking at.
 
 ![](./media/image20.png)
 
-#################### Tomorrow's Schedule & Prep Notes
+Tomorrow's Schedule & Prep Notes
 
 - Each meeting row has a color-coded badge: green = Accepted, amber =
   Tentative, red = No Response or Needs Action.
@@ -209,7 +317,7 @@ looking at.
 
 ![](./media/image23.png)
 
-#################### Week Calendar Load & Time Allocation Charts
+Week Calendar Load & Time Allocation Charts
 
 - The bar chart shows how many meetings fall on each day of the upcoming
   week. Heavy days (7+ meetings) appear in red.
@@ -226,7 +334,7 @@ looking at.
 
 ![](./media/image26.png)
 
-#################### Dark Mode Toggle
+Dark Mode Toggle
 
 - Look for the sun/moon pill button in the top-right corner of the
   dashboard header.
@@ -238,16 +346,25 @@ looking at.
 
 ![](./media/image28.png)
 
-########## Troubleshooting Common Issues
+## Troubleshooting Common Issues
 
-[TABLE]
+| Issue | Resolution |
+|---|---|
+| **No Cowork tab visible** | Cowork may not be enabled for your tenant. Contact your Microsoft 365 administrator or check your Copilot licensing tier. |
+| **Task runs but dashboard is empty** | You may have very little calendar or email data. Add a few test meetings and emails, then re-run Prompt 1. |
+| **KPI tiles all show zero** | This is normal if your mailbox has no unread messages or no upcoming meetings. The values reflect live data. |
+| **Links in the dashboard don't open** | Some email clients strip links from HTML attachments. Open the attachment in a browser instead of the email preview. |
+| **Scheduled task shows 'Paused'** | You or Cowork may have edited the task. Open the task in Cowork and click Resume. |
+| **Morning email never arrives** | Check that the task is Active and that your email address is correct. Also check your Junk/Spam folder. |
+| **Charts look broken** | The charts require a modern browser. Try Chrome, Edge, or Firefox. Older Outlook preview panes may not render CSS correctly. |
+| **Dark mode resets on refresh** | The preference is stored in browser localStorage. If you opened the HTML in a sandboxed viewer, localStorage is blocked — this is expected. |
 
-########## Customization Tips
+## Customization Tips
 
 Once you are comfortable with the base dashboard, try these
 customizations:
 
-#################### Task 1: Lock the Layout
+## Task 1: Lock the Layout
 
 1.  After the dashboard looks exactly how you want it, tell Cowork:
 
@@ -269,7 +386,7 @@ approved layout, CSS, and premium visual touches.
 
 ![](./media/image32.png)
 
-#################### Change the Refresh Frequency
+## Change the Refresh Frequency
 
 1.  Open the scheduled task in Cowork.  
     ![](./media/image32.png)
@@ -281,11 +398,11 @@ approved layout, CSS, and premium visual touches.
 3.  Remember to Resume the task after editing.  
     ![](./media/image34.png)
 
-[TABLE]
+**TIP**:  The morning email is only sent at 9 AM — all other refreshes silently overwrite the file. If you want the email at a different time, update that in the prompt when you edit the scheduled task.
 
-########## Summary & Next Steps
+### Summary & Next Steps
 
-#################### What You Accomplished
+### What You Accomplished
 
 - Navigated to Copilot Cowork and created a new task
 
@@ -300,7 +417,7 @@ approved layout, CSS, and premium visual touches.
 
 - Learned how to troubleshoot common issues and customize the dashboard
 
-#################### Next Steps
+### Next Steps
 
 - Run the dashboard for a full week and note which sections you use most
 
