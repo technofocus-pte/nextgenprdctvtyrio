@@ -1,4 +1,4 @@
-# Lab 7 - Build an Enterprise Marketing Operations Agent with Microsoft Copilot
+# Lab 1 - Build an Enterprise Marketing Operations Agent with Microsoft Copilot
 
 ## Scenario
 
