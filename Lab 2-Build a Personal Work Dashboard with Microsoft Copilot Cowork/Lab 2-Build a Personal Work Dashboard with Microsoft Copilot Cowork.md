@@ -51,7 +51,15 @@ attention right now?"***
 Before starting the lab, confirm each item below. If any item is
 missing, contact your Microsoft 365 administrator.
 
-[TABLE]
+| Requirement | How to Verify |
+|---|---|
+| **Microsoft 365 Account** | You can sign in at microsoft365.com with your work or school account |
+| **Copilot Cowork Access** | You see a 'Cowork' option or tab when you open Microsoft Copilot |
+| **Outlook Enabled** | You can open Outlook and see your inbox |
+| **Calendar Enabled** | You can open the M365 Calendar and see your meetings |
+| **Teams Enabled** | You can open Microsoft Teams and see your chats |
+| **OneDrive Enabled** | You can access OneDrive and see recent files |
+| **At Least 5 Upcoming Events** | You have meetings on your calendar so the dashboard has real data to show |
 
 # **Exercise 1: Open Copilot Cowork**
 
