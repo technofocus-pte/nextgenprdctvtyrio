@@ -1,9 +1,8 @@
-**Build an Enterprise Marketing Operations Agent with Microsoft
-Copilot**
+# Lab 7 - Build an Enterprise Marketing Operations Agent with Microsoft Copilot
+
+## Scenario
 
 **Estimated duration: 40 minutes**
-
-# **Scenario**
 
 Zava Retail is an omnichannel retailer with 12 physical stores and a
 successful online business. Its marketing team runs frequent,
