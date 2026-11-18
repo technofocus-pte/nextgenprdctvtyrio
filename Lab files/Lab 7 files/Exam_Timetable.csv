@@ -1,0 +1,16 @@
+ExamID,Program,Semester,SubjectCode,SubjectName,ExamDate,Day,StartTime,EndTime,Venue
+EX001,B.Tech Computer Science,3,CS201,Operating Systems,2026-12-07,Monday,10:00,13:00,Main Exam Hall A
+EX002,B.Tech Computer Science,3,MA201,Discrete Mathematics,2026-12-09,Wednesday,10:00,13:00,Main Exam Hall A
+EX003,B.Tech Computer Science,3,CS202,Database Management Systems,2026-12-11,Friday,10:00,13:00,Block B Hall 2
+EX004,B.Tech Computer Science,3,CS203,Computer Organisation,2026-12-14,Monday,10:00,13:00,Block B Hall 2
+EX005,B.Tech Computer Science,3,CS204,Design and Analysis of Algorithms,2026-12-16,Wednesday,10:00,13:00,Main Exam Hall A
+EX006,BBA,3,BA201,Human Resource Management,2026-12-07,Monday,10:00,13:00,Block C Hall 1
+EX007,BBA,3,BA202,Financial Management,2026-12-09,Wednesday,10:00,13:00,Block C Hall 1
+EX008,BBA,3,BA203,Operations Management,2026-12-11,Friday,10:00,13:00,Block C Hall 3
+EX009,BBA,3,BA204,Business Law,2026-12-14,Monday,10:00,13:00,Block C Hall 3
+EX010,BBA,3,BA205,Research Methodology,2026-12-16,Wednesday,10:00,13:00,Block C Hall 1
+EX011,B.Sc Physics,3,PY201,Optics,2026-12-08,Tuesday,10:00,13:00,Science Block Hall 1
+EX012,B.Sc Physics,3,PY202,Quantum Mechanics I,2026-12-10,Thursday,10:00,13:00,Science Block Hall 1
+EX013,B.Sc Physics,3,PY203,Electronics,2026-12-12,Saturday,10:00,13:00,Science Block Hall 2
+EX014,B.Sc Physics,3,PY204,Physics Lab III (Practical),2026-12-15,Tuesday,14:00,16:00,Physics Laboratory 2
+EX015,B.Sc Physics,3,MA203,Numerical Methods,2026-12-16,Wednesday,10:00,13:00,Science Block Hall 1

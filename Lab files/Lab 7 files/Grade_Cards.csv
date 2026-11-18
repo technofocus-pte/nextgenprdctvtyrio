@@ -1,0 +1,81 @@
+StudentID,StudentName,Program,Semester,SubjectCode,SubjectName,Credits,Grade,GradePoints,Result,SemesterGPA,CGPA,OverallStanding
+STU001,Rohan Mehta,B.Tech Computer Science,1,CS101,Programming in C,4,A,8,Pass,8.08,8.0,First Class
+STU001,Rohan Mehta,B.Tech Computer Science,1,MA101,Engineering Mathematics I,4,A+,9,Pass,8.08,8.0,First Class
+STU001,Rohan Mehta,B.Tech Computer Science,1,PH101,Engineering Physics,3,B+,7,Pass,8.08,8.0,First Class
+STU001,Rohan Mehta,B.Tech Computer Science,1,EN101,Technical English,2,A,8,Pass,8.08,8.0,First Class
+STU001,Rohan Mehta,B.Tech Computer Science,2,CS102,Data Structures,4,A,8,Pass,7.93,8.0,First Class
+STU001,Rohan Mehta,B.Tech Computer Science,2,MA102,Engineering Mathematics II,4,B+,7,Pass,7.93,8.0,First Class
+STU001,Rohan Mehta,B.Tech Computer Science,2,CS103,Digital Logic Design,3,A,8,Pass,7.93,8.0,First Class
+STU001,Rohan Mehta,B.Tech Computer Science,2,CS104,Object Oriented Programming,3,A+,9,Pass,7.93,8.0,First Class
+STU002,Aditi Sharma,B.Tech Computer Science,1,CS101,Programming in C,4,O,10,Pass,9.46,9.37,First Class with Distinction
+STU002,Aditi Sharma,B.Tech Computer Science,1,MA101,Engineering Mathematics I,4,A+,9,Pass,9.46,9.37,First Class with Distinction
+STU002,Aditi Sharma,B.Tech Computer Science,1,PH101,Engineering Physics,3,A+,9,Pass,9.46,9.37,First Class with Distinction
+STU002,Aditi Sharma,B.Tech Computer Science,1,EN101,Technical English,2,O,10,Pass,9.46,9.37,First Class with Distinction
+STU002,Aditi Sharma,B.Tech Computer Science,2,CS102,Data Structures,4,A+,9,Pass,9.29,9.37,First Class with Distinction
+STU002,Aditi Sharma,B.Tech Computer Science,2,MA102,Engineering Mathematics II,4,O,10,Pass,9.29,9.37,First Class with Distinction
+STU002,Aditi Sharma,B.Tech Computer Science,2,CS103,Digital Logic Design,3,A+,9,Pass,9.29,9.37,First Class with Distinction
+STU002,Aditi Sharma,B.Tech Computer Science,2,CS104,Object Oriented Programming,3,A+,9,Pass,9.29,9.37,First Class with Distinction
+STU003,Karan Verma,BBA,1,BA101,Principles of Management,4,B+,7,Pass,7.23,7.37,First Class
+STU003,Karan Verma,BBA,1,BA102,Business Economics,4,A,8,Pass,7.23,7.37,First Class
+STU003,Karan Verma,BBA,1,BA103,Financial Accounting,3,B,6,Pass,7.23,7.37,First Class
+STU003,Karan Verma,BBA,1,BA104,Business Communication,2,A,8,Pass,7.23,7.37,First Class
+STU003,Karan Verma,BBA,2,BA105,Marketing Management,4,A,8,Pass,7.5,7.37,First Class
+STU003,Karan Verma,BBA,2,BA106,Business Statistics,4,B+,7,Pass,7.5,7.37,First Class
+STU003,Karan Verma,BBA,2,BA107,Organisational Behaviour,3,B+,7,Pass,7.5,7.37,First Class
+STU003,Karan Verma,BBA,2,BA108,Cost Accounting,3,A,8,Pass,7.5,7.37,First Class
+STU004,Neha Gupta,B.Sc Physics,1,PY101,Mechanics,4,A,8,Pass,8.08,8.35,First Class
+STU004,Neha Gupta,B.Sc Physics,1,PY102,Mathematical Physics I,4,A,8,Pass,8.08,8.35,First Class
+STU004,Neha Gupta,B.Sc Physics,1,PY103,Physics Lab I,2,O,10,Pass,8.08,8.35,First Class
+STU004,Neha Gupta,B.Sc Physics,1,CH101,General Chemistry,3,B+,7,Pass,8.08,8.35,First Class
+STU004,Neha Gupta,B.Sc Physics,2,PY104,Electricity and Magnetism,4,A+,9,Pass,8.62,8.35,First Class
+STU004,Neha Gupta,B.Sc Physics,2,PY105,Mathematical Physics II,4,A,8,Pass,8.62,8.35,First Class
+STU004,Neha Gupta,B.Sc Physics,2,PY106,Physics Lab II,2,O,10,Pass,8.62,8.35,First Class
+STU004,Neha Gupta,B.Sc Physics,2,PY107,Thermal Physics,3,A,8,Pass,8.62,8.35,First Class
+STU005,Arjun Singh,B.Tech Computer Science,1,CS101,Programming in C,4,B,6,Pass,5.85,4.89,Backlog - supplementary exam required
+STU005,Arjun Singh,B.Tech Computer Science,1,MA101,Engineering Mathematics I,4,C,5,Pass,5.85,4.89,Backlog - supplementary exam required
+STU005,Arjun Singh,B.Tech Computer Science,1,PH101,Engineering Physics,3,B,6,Pass,5.85,4.89,Backlog - supplementary exam required
+STU005,Arjun Singh,B.Tech Computer Science,1,EN101,Technical English,2,B+,7,Pass,5.85,4.89,Backlog - supplementary exam required
+STU005,Arjun Singh,B.Tech Computer Science,2,CS102,Data Structures,4,C,5,Pass,4.0,4.89,Backlog - supplementary exam required
+STU005,Arjun Singh,B.Tech Computer Science,2,MA102,Engineering Mathematics II,4,F,0,Fail,4.0,4.89,Backlog - supplementary exam required
+STU005,Arjun Singh,B.Tech Computer Science,2,CS103,Digital Logic Design,3,B,6,Pass,4.0,4.89,Backlog - supplementary exam required
+STU005,Arjun Singh,B.Tech Computer Science,2,CS104,Object Oriented Programming,3,B,6,Pass,4.0,4.89,Backlog - supplementary exam required
+STU006,Priyanka Das,BBA,1,BA101,Principles of Management,4,A+,9,Pass,8.46,8.48,First Class
+STU006,Priyanka Das,BBA,1,BA102,Business Economics,4,A,8,Pass,8.46,8.48,First Class
+STU006,Priyanka Das,BBA,1,BA103,Financial Accounting,3,A,8,Pass,8.46,8.48,First Class
+STU006,Priyanka Das,BBA,1,BA104,Business Communication,2,A+,9,Pass,8.46,8.48,First Class
+STU006,Priyanka Das,BBA,2,BA105,Marketing Management,4,A+,9,Pass,8.5,8.48,First Class
+STU006,Priyanka Das,BBA,2,BA106,Business Statistics,4,A,8,Pass,8.5,8.48,First Class
+STU006,Priyanka Das,BBA,2,BA107,Organisational Behaviour,3,A+,9,Pass,8.5,8.48,First Class
+STU006,Priyanka Das,BBA,2,BA108,Cost Accounting,3,A,8,Pass,8.5,8.48,First Class
+STU007,Imran Qureshi,B.Sc Physics,1,PY101,Mechanics,4,B+,7,Pass,6.62,6.85,Second Class
+STU007,Imran Qureshi,B.Sc Physics,1,PY102,Mathematical Physics I,4,B,6,Pass,6.62,6.85,Second Class
+STU007,Imran Qureshi,B.Sc Physics,1,PY103,Physics Lab I,2,A,8,Pass,6.62,6.85,Second Class
+STU007,Imran Qureshi,B.Sc Physics,1,CH101,General Chemistry,3,B,6,Pass,6.62,6.85,Second Class
+STU007,Imran Qureshi,B.Sc Physics,2,PY104,Electricity and Magnetism,4,B+,7,Pass,7.08,6.85,Second Class
+STU007,Imran Qureshi,B.Sc Physics,2,PY105,Mathematical Physics II,4,A,8,Pass,7.08,6.85,Second Class
+STU007,Imran Qureshi,B.Sc Physics,2,PY106,Physics Lab II,2,B+,7,Pass,7.08,6.85,Second Class
+STU007,Imran Qureshi,B.Sc Physics,2,PY107,Thermal Physics,3,B,6,Pass,7.08,6.85,Second Class
+STU008,Sneha Iyer,B.Tech Computer Science,1,CS101,Programming in C,4,A,8,Pass,8.08,8.19,First Class
+STU008,Sneha Iyer,B.Tech Computer Science,1,MA101,Engineering Mathematics I,4,A,8,Pass,8.08,8.19,First Class
+STU008,Sneha Iyer,B.Tech Computer Science,1,PH101,Engineering Physics,3,A+,9,Pass,8.08,8.19,First Class
+STU008,Sneha Iyer,B.Tech Computer Science,1,EN101,Technical English,2,B+,7,Pass,8.08,8.19,First Class
+STU008,Sneha Iyer,B.Tech Computer Science,2,CS102,Data Structures,4,A+,9,Pass,8.29,8.19,First Class
+STU008,Sneha Iyer,B.Tech Computer Science,2,MA102,Engineering Mathematics II,4,A,8,Pass,8.29,8.19,First Class
+STU008,Sneha Iyer,B.Tech Computer Science,2,CS103,Digital Logic Design,3,A,8,Pass,8.29,8.19,First Class
+STU008,Sneha Iyer,B.Tech Computer Science,2,CS104,Object Oriented Programming,3,A,8,Pass,8.29,8.19,First Class
+STU009,Vikram Rao,BBA,1,BA101,Principles of Management,4,B,6,Pass,6.08,6.3,Second Class
+STU009,Vikram Rao,BBA,1,BA102,Business Economics,4,B+,7,Pass,6.08,6.3,Second Class
+STU009,Vikram Rao,BBA,1,BA103,Financial Accounting,3,C,5,Pass,6.08,6.3,Second Class
+STU009,Vikram Rao,BBA,1,BA104,Business Communication,2,B,6,Pass,6.08,6.3,Second Class
+STU009,Vikram Rao,BBA,2,BA105,Marketing Management,4,B+,7,Pass,6.5,6.3,Second Class
+STU009,Vikram Rao,BBA,2,BA106,Business Statistics,4,B,6,Pass,6.5,6.3,Second Class
+STU009,Vikram Rao,BBA,2,BA107,Organisational Behaviour,3,B,6,Pass,6.5,6.3,Second Class
+STU009,Vikram Rao,BBA,2,BA108,Cost Accounting,3,B+,7,Pass,6.5,6.3,Second Class
+STU010,Meera Nair,B.Sc Physics,1,PY101,Mechanics,4,A+,9,Pass,9.08,9.08,First Class with Distinction
+STU010,Meera Nair,B.Sc Physics,1,PY102,Mathematical Physics I,4,O,10,Pass,9.08,9.08,First Class with Distinction
+STU010,Meera Nair,B.Sc Physics,1,PY103,Physics Lab I,2,A+,9,Pass,9.08,9.08,First Class with Distinction
+STU010,Meera Nair,B.Sc Physics,1,CH101,General Chemistry,3,A,8,Pass,9.08,9.08,First Class with Distinction
+STU010,Meera Nair,B.Sc Physics,2,PY104,Electricity and Magnetism,4,O,10,Pass,9.08,9.08,First Class with Distinction
+STU010,Meera Nair,B.Sc Physics,2,PY105,Mathematical Physics II,4,A+,9,Pass,9.08,9.08,First Class with Distinction
+STU010,Meera Nair,B.Sc Physics,2,PY106,Physics Lab II,2,A+,9,Pass,9.08,9.08,First Class with Distinction
+STU010,Meera Nair,B.Sc Physics,2,PY107,Thermal Physics,3,A,8,Pass,9.08,9.08,First Class with Distinction

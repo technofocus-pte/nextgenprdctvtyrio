@@ -1,0 +1,11 @@
+StudentID,StudentName,Email,Program,CurrentSemester,EnrolmentStatus,AnnualFeeTotalINR,FeePaidINR,FeeBalanceINR,FeeDueDate,FeeStatus
+STU001,Rohan Mehta,rohan.mehta@riverbend.edu,B.Tech Computer Science,3,Enrolled,120000,120000,0,2026-12-15,Paid
+STU002,Aditi Sharma,aditi.sharma@riverbend.edu,B.Tech Computer Science,3,Enrolled,120000,120000,0,2026-12-15,Paid
+STU003,Karan Verma,karan.verma@riverbend.edu,BBA,3,Enrolled,90000,60000,30000,2026-12-15,Pending
+STU004,Neha Gupta,neha.gupta@riverbend.edu,B.Sc Physics,3,Enrolled,75000,75000,0,2026-12-15,Paid
+STU005,Arjun Singh,arjun.singh@riverbend.edu,B.Tech Computer Science,3,Enrolled,120000,95000,25000,2026-12-15,Pending
+STU006,Priyanka Das,priyanka.das@riverbend.edu,BBA,3,Enrolled,90000,90000,0,2026-12-15,Paid
+STU007,Imran Qureshi,imran.qureshi@riverbend.edu,B.Sc Physics,3,Enrolled,75000,50000,25000,2026-12-15,Pending
+STU008,Sneha Iyer,sneha.iyer@riverbend.edu,B.Tech Computer Science,3,Enrolled,120000,120000,0,2026-12-15,Paid
+STU009,Vikram Rao,vikram.rao@riverbend.edu,BBA,3,Enrolled,90000,90000,0,2026-12-15,Paid
+STU010,Meera Nair,meera.nair@riverbend.edu,B.Sc Physics,3,Enrolled,75000,75000,0,2026-12-15,Paid
