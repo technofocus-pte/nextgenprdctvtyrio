@@ -1,10 +1,5 @@
 # Lab 4 - Build a Healthcare Agent to Automate Patient Appointments
 
-Revised version for the new Microsoft Copilot Studio agent experience.
-Topics are replaced by instructions, knowledge and skills; Power Apps,
-Dataverse and Power Automate are not used. Agents in this experience use
-usage-based billing (Copilot Credits).
-
 ## Scenario
 
 Northstar Community Hospital operates multiple outpatient clinics and
