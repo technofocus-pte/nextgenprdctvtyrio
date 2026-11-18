@@ -1,1054 +1,403 @@
-# Lab 7 - Build a Multi-agent Campus Assistant for the Education industry with Copilot Studio
+# Build a Multi-agent Campus Assistant for the Education Industry with Copilot Studio
 
-## Scenario
+**Duration:** 50 minutes 
+
+## Lab Overview
 
 Riverbend University, home to about 18,000 students, sees the same
-requests flood in every semester: fee balance checks to Student
-Services, exam timetable calls to the Examinations Office, and document
-questions to the Admissions inbox. Last semester the Student Services
-helpdesk logged over 6,400 tickets, and an audit found roughly 70% were
-repetitive, two-minute questions buried behind a multi-day queue.
+requests flood in every semester: fee balance checks, exam timetable
+questions, admissions queries and certificate requests. An audit found
+roughly 70% of the 6,400 helpdesk tickets last semester were repetitive,
+two-minute questions buried behind a multi-day queue.
 
-The tipping point came when a first-year student, Aditi Sharma, had to
-email three separate departments and wait four business days for a
-bonafide certificate — nearly missing her visa appointment. Priya Nair,
-Riverbend’s Director of IT Services, took the incident to the digital
-transformation steering committee, which approved a pilot: one AI
-assistant in Microsoft Teams that gives students instant, accurate
-answers without them ever needing to know which department or system
-holds the data — with one hard rule: no guessing. Fee, grade, and exam
-data must come straight from Dataverse, and admissions answers must come
-straight from the official prospectuses.
+Priya Nair, Director of IT Services, has approved a pilot: one AI
+assistant that gives students instant, accurate answers without them
+needing to know which department holds the data. The hard rule is **no
+guessing**. Fee, grade, and exam data must come from the official
+student record files, and general answers must come from official
+university documents.
 
-Priya has assigned you, a Power Platform developer on her team, to build
-and ship this pilot. In this lab, you’ll build **Atlas**, the
-orchestrator agent students talk to using Github Copilot Harness, and
-connect it to a **Campus Services Agent** that uses MCP to work with
-Dataverse data. You’ll also add academic and admissions capabilities
-using **grounded knowledge and custom skills**, and create a workflow
-that sends bonafide certificate requests to a university staff member
-for approval. By the end, you’ll publish Atlas to Teams and Microsoft
-Copilot and validate the student experience from request to approval.
+In this lab, you will build the entire solution inside Copilot Studio.
+You will create **Atlas**, the orchestrator agent, and a **Campus
+Services Agent** that answers student-specific questions from uploaded
+student record files. You will also add an agent flow that submits
+bonafide certificate requests, then publish Atlas and test it as a
+student.
 
-## Lab Objective
+### Lab Objectives
 
 By the end of this lab, you will be able to:
 
-- Provision and populate **Microsoft Dataverse** tables to provide a
-  shared data foundation for student and university information.
+- Build an orchestrator agent in Copilot Studio that grounds its answers
+  in uploaded knowledge.
 
-- Build an **orchestrator agent in Copilot Studio** that understands
-  student requests and routes them to the appropriate campus service
-  capabilities.
+- Build a specialist agent that answers fee, grade and exam questions
+  from uploaded student record files.
 
-- Build a **Campus Services Agent** that uses the **Model Context
-  Protocol (MCP)** to securely access and manage live Dataverse records.
+- Connect the specialist agent to the orchestrator as a connected agent.
 
-- Enhance the solution with **grounded knowledge sources and custom
-  skills** to handle academic and admissions-related student requests.
+- Create an agent flow, with student confirmation, to process bonafide
+  certificate requests.
 
-- Create a **workflow with human approval** to process bonafide
-  certificate requests and notify the appropriate university staff
-  member.
+- Publish the agent and test the end-to-end student experience from
+  Copilot Studio.
 
-- Connect the agents and workflow to the **Atlas orchestrator** and
-  validate the end-to-end student experience.
+### Time Plan
 
-- Publish the solution to **Microsoft Teams and Microsoft Copilot** and
-  test it from a student’s perspective.
+[TABLE]
 
-## Exercise 0: Provision the Dataverse Data Foundation
+## Lab Prerequisites
 
-This exercise establishes the system of record that every agent in this
-lab will read from and write to. You will create six Dataverse tables
-and populate one of them from a sample CSV file to confirm the import
-pattern works. This foundation must be in place before any agent can
-retrieve real student, academic, or financial data.
+- Access to Microsoft Copilot Studio at
+  https://copilotstudio.microsoft.com with the lab credentials provided.
 
-### Task 1: Import Source Data into Dataverse Tables
+- The following files are available in C:\Labfiles\CampusFiles:
+  Campus_faq.pdf, Student_handbook.pdf, Exam_regulation.pdf,
+  Admission_faq.pdf, Student_Records.csv, Grade_Cards.csv, and
+  Exam_Timetable.csv.
 
-1.  Open a web browser and navigate to +++https://make.powerapps.com+++.
+- The three CSV files hold the sample student data (IDs such as STU002,
+  STU003 and STU007) that the Campus Services Agent answers from.
 
-2.  Log in using the following credentials:
-
-![A screenshot of a computer screen AI-generated content may be
-incorrect.](./media/image1.png)![A screenshot of a login box
-AI-generated content may be incorrect.](./media/image2.png)![A
-screenshot of a computer error AI-generated content may be
-incorrect.](./media/image3.png)![A person holding a computer
-AI-generated content may be incorrect.](./media/image4.png)
-
-3.  From the left-navigation menu, select **Tables-\>+ New
-    table-\>Create new tables**.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image5.png)
-
-4.  Select **Import an Excel file or .CSV**.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image6.png)
-
-5.  Select from device.
-
-- ![A screenshot of a file AI-generated content may be
-  incorrect.](./media/image7.png)
-
-6.  Select the **BookCatalog.csv** file from C:and choose **Open**.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image8.png)
-
-7.  Select **Import**.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image9.png)
-
-8.  Once the import completes, select **Save and exit(twice).**
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image10.png)
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image11.png)
-
-9.  Open the newly created table and confirm the imported rows match the
-    source CSV file.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image12.png)
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image13.png)
-
-10. Repeat the same table-creation pattern to add the following tables
-    from C:, which the agents in later exercises will depend on:
-
-    - Exam Timetable Entry
-
-    - Fee Record
-
-    - Grade Card
-
-    - Student
-
-    - Certificate Request
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image14.png)
+- Basic familiarity with the Copilot Studio authoring canvas.
 
 ## Exercise 1: Build Atlas, the Orchestrator Agent
 
-Atlas is the single front door for every student interaction — the agent
-students actually talk to. In this exercise, you will create Atlas, give
-it routing instructions for three future specialist agents, ground it in
-general university documents, and confirm it responds sensibly before
-any child agents exist.
+Atlas is the single front door for every student interaction. You will
+create it, give it routing instructions, and ground it in general
+university documents.
 
 ### Task 1: Create and Configure the Atlas Agent
 
-1.  Open a browser and navigate to Copilot Studio  
-    +++https://copilotstudio.microsoft.com/+++ and log in using the
-    following credentials:
+1.  Navigate to
+    [*https://copilotstudio.microsoft.com/*](https://copilotstudio.microsoft.com/)
+    and login with your credentials.
 
-- ![A screenshot of a computer screen AI-generated content may be
-  incorrect.](./media/image15.png)
+2.  From the Copilot Studio home page, select **Agents** from the left
+    navigation menu, and then select **New agent**.  
+    ![](./media/image15.png)
 
-  ![A screenshot of a login screen AI-generated content may be
-  incorrect.](./media/image16.png)
+3.  In the **Name** field, enter +++Atlas+++
 
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image17.png)
+4.  In the **Instructions** field, enter the following:
 
-2.  From the home page, select **Agent** to create a new agent.
+You are Atlas, the university's intelligent student support assistant.  
+  
+Your responsibilities:  
+- Welcome students and answer general university-related questions using
+your own knowledge sources.  
+- Route any request involving fees, certificates, enrolment, grades,
+GPA, exam timetables, admissions, or eligibility to the Campus Services
+Agent.  
+- Coordinate responses when a request involves both a general question
+and a specialist request: answer the general part yourself, delegate the
+specialist part, and combine both into a single clear reply.  
+  
+Guidelines:  
+- Be friendly, concise, and professional in every response.  
+- Do not answer on behalf of the Campus Services Agent when the request
+should be delegated.  
+- Do not make up information. Use the connected agent and available
+knowledge sources to provide accurate responses.  
+- If you cannot find sufficient information, politely inform the student
+and recommend contacting the university helpdesk.
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image18.png)
+![](./media/image4.png)
 
-3.  Enter the name of the agent as +++Atlas+++
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image19.png)
-
-4.  Enter the following instructions in the instruction field:
-
-- 
-      You are Atlas, the university's intelligent student support assistant.
-
-      Your responsibilities:
-
-      - Welcome students and answer general university-related questions
-
-      whenever possible, using your own knowledge sources.
-
-      - Route any request involving fees, certificates, enrolment, grades,
-
-      GPA, exam timetables, admissions, or eligibility to the Campus
-
-      Services Agent.
-
-      - Coordinate responses when a student's request involves both a
-
-      general question and a specialist request — answer the general part
-
-      yourself, delegate the specialist part, and combine both into a
-
-      single clear reply.
-
-      Guidelines:
-
-      - Be friendly, concise, and professional in every response.
-
-      - Do not answer on behalf of the Campus Services Agent when the
-
-      request should be delegated.
-
-      - Do not make up information. Use the connected agent and available
-
-      knowledge sources to provide accurate responses.
-
-      - If you cannot find sufficient information, politely inform the
-
-      student and recommend contacting the university helpdesk.
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image20.png)
+5.  Select **Create**.
 
 ### Task 2: Ground Atlas in General University Knowledge
 
-1.  From the right panel, under Knowledge, remove the **Search all
-    websites** option, so Atlas answers only from trusted sources.
+1.  On the Atlas **Overview** page, scroll to the **Knowledge**
+    section.  
+    ![](./media/image21.png)
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image21.png)
+2.  Turn off **Use general knowledge** and **Web search** so Atlas
+    answers only from trusted sources.  
+    ![](./media/image44.png)
 
-2.  Select the **Knowledge** tab to add a knowledge source.
+3.  Select **Add knowledge**, then select **Files**.
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image22.png)
+4.  Select **Select files to upload**, browse to
+    C:\Labfiles\CampusFiles, and select **Campus_faq.pdf** and
+    **Student_handbook.pdf**.  
+    ![](./media/image35.png)
 
-3.  Select **Drag and drop or click to upload**.
+5.  Select **Open**, and then select **Add to agent**.
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image23.png)
+6.  Wait until both files show a status of **Ready**.  
+    ![](./media/image36.png)
 
-4.  Upload the following files from C:/Labfiles/CampusFiles:
+7.  Publish the agent.  
+    ![](./media/image6.png)
 
-    - Campus_faq.pdf
+### 
 
-    - Student_handbook.pdf
+### Task 3: Test Atlas
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image24.png)
+1.  Move to the **Preview** tab, enter the following prompt and press
+    Enter:
 
-5.  Select **Add to agent** to attach both files as grounding sources.
++++Hi Atlas! Can you introduce yourself and explain how you can help
+me?+++  
+![](./media/image3.png)
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image25.png)
+2.  Review the response. Confirm Atlas introduces itself, describes its
+    role and mentions the categories of help it provides.  
+    ![](./media/image8.png)
 
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image26.png)
+## Exercise 2: Build the Campus Services Agent 
 
-6.  Select **Publish** to publish the agent.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image27.png)
-
-### Task 3: Test Atlas in the Preview Pane
-
-1.  Select the **Preview** tab at the top of the screen.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image28.png)
-
-2.  Enter the following prompt and select **Send**:
-
-- +++Hi Atlas! Can you introduce yourself and explain how you can help
-  me?+++
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image29.png)
-
-3.  Review Atlas’s response and confirm it introduces itself, describes
-    its role, and references the categories of help it can provide.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image30.png)
-
-## Exercise 2: Build the Campus Services Agent
-
-Student Services requests — fee balances, certificates, enrolment status
-— require real-time, per-student data rather than static documents. In
-this exercise you will build a child agent that connects to Dataverse
-through an MCP server, giving it the ability to securely read and write
-live student records on Atlas’s behalf.
+Fee balances, grades and exam schedules are student-specific. In this
+exercise, you will build a specialist agent that answers them only from
+the uploaded student record files.
 
 ### Task 1: Create and Configure the Campus Services Agent
 
-1.  Expand the left navigation menu and select **Agents**.
+1.  From the left navigation menu, select **Agents**, and then select
+    **New agent**.  
+    ![](./media/image13.png)
+
+2.  In the **Name** field, enter +++Campus Services Agent+++
+
+3.  In the **Instructions** field, enter the following:
+
+You are the Campus Services Agent for Riverbend University. You work as
+a connected agent for Atlas. Atlas delegates to you whenever a student
+needs fee, certificate, enrolment, grade, GPA, exam timetable, or
+admissions information.  
+  
+Responsibilities:  
+- Fee balances and enrolment status: answer only from
+Student_Records.csv.  
+- Grades, GPA, and academic performance: answer only from
+Grade_Cards.csv. Summarize GPA, semester, subject grades and overall
+standing. If no record exists, say that no academic record was found.  
+- Exam timetable, dates, and venues: answer only from
+Exam_Timetable.csv.  
+- Admissions questions (eligibility, required documents, application
+process, deadlines): answer only from Admission_faq.pdf. If the answer
+is not there, recommend contacting the Admissions Office.  
+  
+Guidelines:  
+- Before returning any student-specific information, ask for the Student
+ID if it has not been provided.  
+- Verify the Student ID exists in Student_Records.csv before returning
+any fee, grade, or exam data.  
+- Never guess or invent fees, grades, exam schedules, or admissions
+policy. If information cannot be found, say so clearly and recommend
+contacting the relevant office.  
+- Return concise, structured responses suitable for Atlas to present to
+students.
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image31.png)
+![](./media/image22.png)
 
-2.  Select **New Agent**.
+5.  Select Save.  
+    ![](./media/image27.png)
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image32.png)
+6.  On the agent **Overview** page, scroll to **Knowledge** and turn off
+    **Web search**.  
+    ![](./media/image7.png)
 
-3.  Enter agent name as +++Campus Services Agent+++
+### Task 2: Add Admissions Knowledge and Student Records
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image33.png)
+1.  Under **Knowledge**, select **Add knowledge**, then select
+    **Files**.
 
-4.  Enter instructions in the **Intrusions** field:
+2.  Upload **Exam_regulation.pdf**, **Admission_faq.pdf**,
+    **Student_Records.csv**, **Grade_Cards.csv** and
+    **Exam_Timetable.csv** from C:\Labfiles\CampusFiles.  
+    ![](./media/image43.png)
 
-- 
-      You are the Campus Services Agent for Riverbend University.
+3.  Select **Add to agent** and wait until all five files show
+    **Ready**.  
+    ![](./media/image30.png)
 
-      This agent works as a connected agent for Atlas. Atlas delegates to
+### Task 3: Publish and Test the Agent
 
-      you whenever a student needs fee, certificate, enrolment, grade,
+1.  Select **Publish** at the top right, and then select **Publish**
+    again to confirm.
 
-      GPA, exam timetable, or admissions information.
+2.  In the **Preview tab**, enter +++What is the fee balance for Student
+    ID STU007?+++ and confirm the agent returns fee details.”  
+    ![](./media/image23.png)
 
-      Responsibilities
+> ![](./media/image11.png)
 
-      - Fee balances, certificate requests, and enrolment status: retrieve
+3.  Enter +++What are my exam dates? My Student ID is STU003.+++ and
+    confirm the agent returns the timetable entries.  
+    ![](./media/image28.png)
 
-      and, when requested, create/update records using the Dataverse MCP
+## Exercise 3: Connect the Campus Services Agent to Atlas
 
-      tools (Fee Record, Student, Student Request tables).
+### Task 1: Connect the Specialist Agent
 
-      - Grades, GPA, and academic performance: use the Academic Advisor
+1.  From the left navigation menu, select **Agents**, and open
+    **Atlas**.  
+    ![](./media/image20.png)
 
-      skill together with the Dataverse MCP tools (Grade Card table).
+2.  On the **Build** page, select **Connected Agents.  **
+    ![](./media/image26.png)
 
-      - Exam timetable, exam dates, and venues: retrieve directly from the
+3.  Select **Connect to an existing agent**, and then select **Campus
+    Services Agent**.  
+    ![](./media/image46.png)
 
-      Exam Timetable Entry table using the Dataverse MCP tools.
+4.  In the **Description** field, enter the following:
 
-      - Admissions questions (eligibility, required documents, application
+Handles fee balances, certificate requests, enrolment verification,
+grades, GPA, exam timetables, and admissions questions (eligibility,
+documents, application process, deadlines). Combines student record
+files with knowledge sources to deliver accurate, data-grounded answers
+on Atlas's behalf.
 
-      process, deadlines): use the Admissions Advisor skill together with
+![](./media/image37.png)
 
-      the knowledge sources. Do not use MCP tools for these questions —
+5.  Select **Add and configure**, and confirm the agent now appears in
+    the **Agents** section.  
+    ![](./media/image40.png)
 
-      Admissions has no live Dataverse data.
+6.  Select **Publish**, and then **Publish** again.  
+    ![](./media/image18.png)
 
-      Guidelines
+### Task 2: Validate Delegation
 
-      - Before retrieving or updating any student-specific information,
+1.  In the **Preview tab** for Atlas, enter: +++I want to check my fee
+    balance. My Student ID is STU007.+++  
+    ![](./media/image33.png)
 
-      ask the student for their Student ID if it has not already been
+2.  Review the response. In the activity map, confirm Atlas called the
+    Campus Services Agent.
 
-      provided.
+> ![](./media/image45.png)
 
-      - Verify the Student ID exists in the Student table before returning
+3.  Return to Atlas and enter: +++Can you show me my grade card? Student
+    ID STU003.+++  
+    ![](./media/image38.png)
 
-      any fee, grade, or exam data.
+4.  Confirm the agent returns GPA and subject grades that match
+    **Grade_Cards.csv**.  
+    ![](./media/image39.png)
 
-      - Confirm details with the student before performing any update that
+## Exercise 4: Create the Certificate Request Flow
 
-      modifies university records (e.g. submitting a certificate request).
+A certificate request should only be submitted once the student confirms
+it. In this exercise, you will build an agent flow that submits a
+bonafide certificate request and returns a reference number, and
+instruct the agent to collect the student's confirmation in chat first.
 
-      - Never guess or invent fees, grades, exam schedules, or admissions
+### Task 1: Create the Agent Flow
 
-      policy. If information cannot be found, say so clearly and recommend
+1.  Open the **Campus Services Agent**, select the **Tools** tab, and
+    then select **Add tool**.  
+    ![](./media/image25.png)
 
-      contacting the relevant office.
+2.  Select **New tool**, and then select **Agent flow**.  
+    ![](./media/image31.png)
 
-      - Return concise, structured responses suitable for Atlas to present
+3.  Select the **When an agent calls the flow** trigger. Select **Add an
+    input**, choose **Text**, and name it +++StudentID+++  
+    ![](./media/image29.png)
 
-      to students.​‌
+> ![](./media/image10.png)
 
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image34.png)
+4.  Repeat to add two more **Text** inputs: +++StudentEmail+++ and
+    +++RequestPurpose+++  
+    ![](./media/image2.png)
 
-5.  From the right panel, under Knowledge, remove the **Search all
-    websites** toggle to prevent this agent from answering from public
-    web content.
+5.  Select the **+** icon below the trigger, search for +++Compose+++,
+    and select **Compose** under **Data Operation**.  
+    ![](./media/image24.png)
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image35.png)
+6.  In the **Inputs** field, select the **fx** icon, enter
+    +++concat('BON-', formatDateTime(utcNow(), 'yyyyMMddHHmmss'))+++ and
+    select **Add**.  
+    ![](./media/image32.png)
 
-6.  Select **Knowledge → Drag and drop or click to upload**.
+> ![](./media/image1.png)
+>
+> ![](./media/image5.png)
 
-7.  Upload the following two files from C::
+7.  Select the **+** icon below the action and search for +++Respond to
+    the agent+++.  
+    ![](./media/image41.png)
 
-    - exame_regulation.pdf
+8.  Select **Add an output**, choose **Text**, and enter +++Status+++ as
+    the name with +++Sent+++ as the value.
 
-    - Admission_faq.pdf
+9.  Select **Add an output** again, choose **Text**, enter
+    +++ReferenceID+++ as the name, and select the lightning icon to
+    choose the **Outputs** of the **Compose** action as the value.
 
-- Select **Add to agent**.
+10. Select **Add an output** once more, choose **Text**, and enter
+    +++Message+++ as the name with +++Request submitted to Student
+    Services+++ as the value.  
+    ![](./media/image12.png)
 
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image36.png)
+11. Select the flow name at the top left and rename it +++Certificate
+    Request Notification+++  
+    ![](./media/image9.png)
 
-### Task 2: Connect the Agent to the Dataverse MCP Server
+12. Select **Save draft**, and then select **Publish**.
 
-1.  From the right panel, select **Tools**.
+> ***Note:** In this lab, the flow generates a reference number and
+> records the request in its run history. In production, you would add a
+> step that emails or saves the request for Student Services.  *
+> ![](./media/image19.png)
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image37.png)
+### Task 2: Connect the Flow to the Agent
 
-2.  Select the **Model Context Protocol(MCP)** filter
+1.  Return to the **Campus Services Agent** and select **Tools**, then
+    **Add tool**.  
+    ![](./media/image16.png)
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image38.png)
+2.  Select the **Flow** filter and choose **Certificate Request
+    Notification**.  
+    ![](./media/image47.png)
 
-3.  Search for +++Dataverse+++ in the search bar and select **Microsoft
-    Dataverse MCP** **Server**.
+3.  Under **Instructions**, add the following to the end of the
+    **Responsibilities** section:
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image39.png)
+\- Certificate requests: collect the Student ID and the reason for the
+request. Verify the Student ID exists in Student_Records.csv and
+retrieve the student's email. Show the student a summary (Student ID,
+request type, reason) and ask them to confirm with Yes or No before
+continuing.  
+- If the student confirms, call the Certificate Request Notification
+tool, passing StudentID, StudentEmail and RequestPurpose. When the tool
+returns Status = Sent, tell the student their request has been submitted
+to Student Services, and give them the ReferenceID. Do not claim it has
+been read or acted on.  
+- If the student declines, do not call the tool. Tell the student the
+request was not submitted and ask what they would like to change.
 
-4.  Expand the connection drop-down and select **Create new
-    connection**.
+![](./media/image17.png)
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image40.png)
+5.  Select **Save**, then **Publish**.  
+    ![](./media/image14.png)
 
-5.  Select **Create** to authorize the connection.
+## Exercise 5: Publish and Test End to End (9 min)
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image41.png)
+### Task 1: Test the Student Experience
 
-6.  Select the current user account.
+1.  On the Preview tab, enter:
 
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image42.png)
++++I need a bonafide certificate for my visa application. My Student ID
+is STU002.+++  
+![](./media/image34.png)
 
-7.  Select **Add** to attach the MCP server as a tool for this agent.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image43.png)
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image44.png)
-
-### Task 3: Add the Academic Advisor Skill (Live-Data Domain)
-
-1.  Select **Skills**.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image45.png)
-
-2.  Select the **Create from blank** tab. Create the skill with the
-    following values:
-
-    - **Name:** +++academic-advisor+++
-
-    - **Description:** +++Use this skill whenever a student asks about
-      GPA, grades, academic performance, semester results, or subject
-      marks.+++
-
-    - **Instructions:**
-
-- You help students understand their academic performance.
-
-          Use this skill only when the student asks about:
-          - Current GPA
-          - Grade Card
-          - Semester Results
-          - Subject Grades
-          - Academic Performance
-          - CGPA / Percentage
-          - Failed or Passed subjects
-
-          Procedure
-          1. Verify that a Student ID has been provided; if not, ask for it.
-          2. Use the Dataverse MCP Server to verify the Student ID exists in
-              the Student table.
-          3. Retrieve the student's academic records from the Grade Card table.
-          4. Summarize GPA, semester, subject grades, and overall standing.
-          5. If no record exists, clearly explain that no academic record was
-              found.
-          6. Never invent grades or GPA. Keep the response concise and
-              student-friendly.
-
-  ![A screenshot of a computer screen AI-generated content may be
-  incorrect.](./media/image46.png)
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image47.png)
-
-### Task 4: Add the Admissions Advisor Skill (Knowledge-Only Domain)
-
-1.  Select **Skills** again.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image48.png)
-
-2.  Select the **Create from blank** tab. Then create the skill with the
-    following values:
-
-    - **Name:** admissions-advisor
-
-    - **Description:** Use when a prospective student asks about
-      admission eligibility, application procedures, required documents,
-      or admission deadlines.
-
-    - **Instructions:**
-
-- You help prospective students understand Riverbend University's
-          admission process.
-
-          Use this skill only when the student asks about:
-          - Admission eligibility
-          - Required documents
-          - Application process
-          - Admission deadlines
-          - Program requirements
-
-          Procedure
-          1. Identify what program or course the student is asking about.
-          2. Use the knowledge sources to locate the relevant admission
-              requirements.
-          3. Explain the eligibility criteria clearly.
-          4. List the required documents.
-          5. Explain the application process step by step.
-          6. Mention deadlines if available.
-          7. If information is unavailable, recommend contacting the
-              Admissions Office.
-
-          Guardrails
-          - Never invent eligibility rules, deadlines, or document
-          requirements.
-          - Always answer from the knowledge sources.
-
-  Select **Create**.
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image49.png)
-
-3.  Select **Publish**, then **Save and Publish**.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image50.png)
-
-## Exercise 3: Connect Campus Services Agent to Atlas
-
-### Task 1: Connect the Specialist Agent to Atlas
-
-1.  Expand the left navigation menu, select **Agents.**
-
-2.  Select **Atlas** agent.
-
-3.  Select **Connected agents**.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image51.png)
-
-4.  Select **Campus Services Agent**.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image52.png)
-
-5.  Enter the following description in the **description** field and
-    select **Connect**.
-
-- Handles fee balances, certificate requests, enrolment verification,
-      grades, GPA, exam timetables, and admissions questions (eligibility,
-      documents, application process, deadlines). Combines Microsoft
-      Dataverse with knowledge sources and two specialized skills to
-      deliver accurate, data-grounded answers on Atlas's behalf.
-
-  Select **Connect**.
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image53.png)
-
-6.  Now you can view your child agent in the Connect agent section.
-
-7.  Select **Publish** to publish the agent.
-
-### Task 2: Validate End-to-End Testing
-
-1.  Select **Preview** from the top bar. Enter the following prompt to
-    test how the Atlas agent invokes the Student Services Agent
-
-- +++I want to check my fee balance. My Student ID is STU007.+++
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image54.png)
-
-2.  Review the output.
-
-- ![A screenshot of a chat AI-generated content may be
-  incorrect.](./media/image55.png)
-
-  ![](./media/image56.png)
-
-3.  To verify the output returned by the Student Services Agent, open a
-    new tab and navigate to +++https://make.powerapps.com+++.
-
-4.  Select Tables and open the **Fee Record** table.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image57.png)
-
-5.  You can see that the result return by the agent is same as the data
-    enter in the table.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image58.png)
-
-6.  Enter the following prompt and click the Send button.
-
-- +++ Can you show me my grade card? Student ID STU003.+++
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image59.png)
-
-7.  Review the output. This will invoke the academic-advisor skill.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image60.png)
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image61.png)
-
-## Exercise 4: Create a workflow
-
-A certificate request shouldn’t go straight to Student Services without
-the student confirming it first. In this exercise, you will build a
-workflow that drafts a request email, sends it to the student for their
-own review and approval, and only forwards it to Student Services once
-they say yes — updating the request’s status in Dataverse at each stage.
-
-### Task 1: Create a workflow
-
-1.  Expand the left navigation menu and select **Workflows**.
-
-- ![](./media/image62.png)
-
-2.  Select **New workflow**.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image63.png)
-
-3.  Name it +++Certificate Request Notification+++
-
-4.  Click on Start trigger step, and select **When an agent calls the
-    flow** as trigger type.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image64.png)
-
-5.  Click +Add an input under the input section of the When an agent
-    calls the Workflow trigger window.
-
-- ![Screens screenshot of a chat AI-generated content may be
-  incorrect.](./media/image65.png)
-
-6.  Select **Text** as input type.
-
-- ![](./media/image66.png)
-
-7.  Enter +++StudentID+++ as a input.
-
-- ![](./media/image67.png)
-
-8.  Similarly, add the following inputs as a **Text** type:
-
-    - +++StudentEmail+++
-
-    - +++RequestPurpose+++
-
-- ![](./media/image68.png)
-
-9.  Select the + **sign** present on the right side of the trigger to
-    add the next step.
-
-- ![A screenshot of a chat AI-generated content may be
-  incorrect.](./media/image69.png)
-
-10. In the Add windows, search for +++Compose+++ and then select
-    **Compose** action
-
-- ![](./media/image70.png)
-
-11. Enter the following to draft the request email from the inputs:
-
-- Dear Student Services Team,
-
-      I would like to request a Bonafide certificate.
-
-      Reason: {Reason}
-
-      Student ID: {StudentID}
-
-      Thank you.
-
-  Here, {Reason} is entered as dynamic content, so click on the
-  thunderbolt icon and then select **RequestPurpose** under When an
-  agent calls the flow.
-
-  ![](./media/image71.png)
-
-  ![](./media/image72.png)
-
-12. Similarly, {StudentID} will enter as dynamic content, so click on
-    the thunderbolt icon and then select Reason under
-
-- ![](./media/image73.png)
-
-  ![A screenshot of a chat AI-generated content may be
-  incorrect.](./media/image74.png)
-
-13. Select the + **sign** present on the right side of the trigger to
-    add the next step.
-
-- ![](./media/image75.png)
-
-14. Search for +++Human review+++, and select **Request information**.
-
-- ![A screenshot of a review AI-generated content may be
-  incorrect.](./media/image76.png)
-
-15. Configure the action:
-
-    - **Title:** +++Review your bonafied request before it’s sent+++
-
-    - **Message:** +++Please review the email below. You can edit the
-      wording before it goes to Student Services.+++ Then insert the
-      output of the **Compose** action by clicking on the Thunderbolt
-      icon.
-
-    - **Assigned to:** Enter the current username
-
-    - **Channel:** Outlook
-
-- ![](./media/image77.png)
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image78.png)
-
-  ![](./media/image79.png)
-
-16. Select **Add an input → Yes/No** as input type, name it
-    +++SendRequest+++, and label it +++Send this to Student Services?+++
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image80.png)
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image81.png)
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image82.png)
-
-17. Select the + **sign** present on the right side of the trigger to
-    add the next step.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image83.png)
-
-18. Select if/Else condition.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image84.png)
-
-19. Enter the branch name as +++Yes branch+++.
-
-20. Configure the condition:
-
-    - **Condition:** Select **OR**
-
-    - **Property:** Select Thundarbolt icon-\> **SendRequest** output
-      **from** Request information
-
-    - **Operator:** Select **Equals**
-
-    - **Value:** Enter **+++** Yes+++
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image85.png)
-
-  ![](./media/image86.png)
-
-  ![](./media/image87.png)
-
-  ![](./media/image88.png)
-
-21. On the **Yes branch**, select its own **+** sign to add next step.
-
-- ![](./media/image89.png)
-
-22. Search for +++send email+++ and then select **Send an email** under
-    Office 365 Outlook section
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image90.png)
-
-23. Configure the email block:
-
-    - Connection: Select **Create new connection** -\> Select
-      **Create**.
-
-    - To: Enter the current username.
-
-    - Subject: Enter +++New certificate request — Action needed+++
-
-    - Body: Enter
-
-- A new certificate request has been submitted.
-
-      Student ID: Select Thunderbolt icon-> When an agent calls the flow-> StudentID
-      Student Email: Select Thunderbolt icon -> When an agent calls the flow-> StudentEmail
-      Request: Select Thunderbolt icon -> When an agent calls the flow-> RequestPurpose
-
-      Please process this request.
-
-  ![](./media/image91.png)
-
-24. After **Send an email**, still on the Yes branch, select **+** and
-    add **Respond to the agent**.
-
-- ![A screenshot of a chat AI-generated content may be
-  incorrect.](./media/image92.png)
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image93.png)
-
-25. Select +Add an output. Then select Text.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image94.png)
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image95.png)
-
-26. Enter output as +++Status+++ = +++Sent+++.
-
-- ![](./media/image96.png)
-
-27. Again, select +Add an output. Then select **Text**.
-
-- ![](./media/image97.png)
-
-28. Enter output as +++ message+++ = +++Staff has been notified+++.
-
-- ![](./media/image98.png)
-
-29. On the **Else branch**, select its own separate **+** and add
-    **Respond to the agent**.
-
-- ![](./media/image99.png)
-
-  ![](./media/image100.png)
-
-30. Select +Add an output. Then select Text.
-
-- ![](./media/image101.png)
-
-  ![](./media/image102.png)
-
-31. Enter output as +++ status+++ = +++ Cancelled+++.
-
-- ![](./media/image103.png)
-
-32. Again, select +Add an output. Then select **Text**.
-
-- ![](./media/image104.png)
-
-33. Enter output as +++ message+++ = +++ Request cancelled by
-    student+++.
-
-- ![](./media/image105.png)
-
-34. The complete workflow will look like this.
-
-- ![](./media/image106.png)
-
-35. Select Publish to publish the workflow.
-
-- ![](./media/image107.png)
-
-### Task 2: Connect the Workflow to the agent
-
-1.  Expand the left navigation menu, select **Agents**, and open
-    **Campus Services Agent**.
-
-- ![](./media/image108.png)
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image109.png)
-
-2.  Select **Tools → Add a tool**.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image110.png)
-
-3.  Select the **Workflows** filter and choose **Certificate Request
-    Notification**.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image111.png)
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image112.png)
-
-4.  Update the agent’s instructions; add the following set of
-    instructions in the responsibilities section.
-
-- 
-      Certificate requests:
-
-      Collect Student ID, request type, and reason; verify the Student
-
-      ID exists in the Student table using the Dataverse MCP tool, and
-
-      retrieve the student's email.
-
-      Create the Student Request record with Status = "Draft" using the
-
-      Dataverse MCP tool.
-
-      Call the Certificate Request Notification workflow tool, passing
-
-      Student ID, Student Email, Request Type, and Reason. This sends
-
-      the drafted request email to the student for their own review —
-
-      it does not notify staff yet.
-
-      Wait for the workflow's response (status, message).
-
-      If status is "Sent": update the Student Request record to
-
-      Status = "Sent to Student Services" using the Dataverse MCP tool,
-
-      then tell the student their request has been sent to Student
-
-      Services and will be processed shortly. Do not claim it has been
-
-      read or acted on — only that it has been sent.
-
-      If status is "Cancelled": update the Student Request record to
-
-      Status = "Cancelled" using the Dataverse MCP tool, then tell the
-
-      student their request was not sent and ask what they'd like to
-
-      change before trying again.
-
-      After calling the workflow, if status is "PendingStudentReview," tell
-      the student: "I've sent a review email to your Outlook inbox — please
-      check it and approve or decline the request. Once you respond, it will
-      move forward automatically." End your turn there; do not wait for or ask
-      about the outcome in this conversation
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image113.png)
-
-5.  Select Publish.
-
-## Exercise 5: Publish Atlas to Microsoft Teams and Microsoft Copilot
-
-A working agent only creates value once students can actually reach it.
-In this final exercise you will publish Atlas as a channel in Microsoft
-Teams and Microsoft Copilot, then run a real end-to-end test —
-submitting a certificate request as a student would — and confirm the
-request lands correctly in Dataverse.
-
-### Task 1: Publish Atlas to Teams and Microsoft Copilot
-
-1.  From the Atlas agent page, expand the **Publish** dropdown and
-    select **Teams + Microsoft**.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image114.png)
-
-2.  Select Save and Publish.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image115.png)
-
-3.  Select **See agent in Teams** to add Atlas agent in Teams.
-
-- ![](./media/image116.png)
-
-4.  Select **Use this web app instead-\>** **Add**.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image117.png)
-
-  ![](./media/image118.png)
-
-5.  Select **Open**.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image119.png)
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image120.png)
-
-### Task 2: Test the End-to-End Student Experience in Teams
-
-1.  In the Teams chat with Atlas, enter the following prompt and click
-    send button:
-
-- +++I need a bonafide certificate for my visa application. My Student
-  ID is STU002.+++
-
-  ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image121.png)
-
-2.  Open a new tab in your web browser and navigate to
-    +++https://outlook.cloud.microsoft/+++.
-
-3.  There, you will receive an email to get approval from you for your
-    application. So, select Yes and select submit.
-
-- ![A screenshot of a computer screen AI-generated content may be
-  incorrect.](./media/image122.png)
-
-4.  An email will be sent to Student Service team for there approval.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image123.png)
-
-  Note: Here we are using the same email address for both the student
-  and Student Services role in this lab; that’s why you’ll see two
-  emails. In a real deployment, these would be different mailboxes.
-
-5.  Navigate back to Teams, and you will receive the confirmation.
-
-- ![A screenshot of a computer screen AI-generated content may be
-  incorrect.](./media/image124.png)
-
-6.  To verify the output returned by the Campus Services Agent, open a
-    new tab and navigate to +++https://make.powerapps.com+++.
-
-7.  Select Tables and open the **Student Request** table.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image125.png)
-
-8.  Confirm a new certificate request record now exists for **STU002**,
-    matching what you submitted in Teams.
-
-- ![A screenshot of a computer AI-generated content may be
-  incorrect.](./media/image126.png)
+2.  When Atlas asks you to confirm the details, reply +++Yes+++.  
+    ![](./media/image42.png)
 
 ## Summary
 
 In this lab, you built a complete multi-agent student support solution
-for Riverbend University. You provisioned Dataverse as the shared data
-foundation, then built **Atlas**, the orchestrator agent that
-understands student intent and routes requests to the appropriate campus
-service capabilities.
+for Riverbend University entirely in Copilot Studio. You built the Atlas
+orchestrator grounded in university documents, and a Campus Services
+Agent that answers fee, grade and exam questions from student record
+files.
 
-The **Campus Services Agent** uses MCP to securely access and manage
-live Dataverse data, while academic and admissions capabilities use
-**grounded knowledge and custom skills** to handle student questions.
-You also created a **human approval workflow** that routes bonafide
-certificate requests to a university staff member for review and
-approval.
-
-You connected these capabilities to Atlas, validated the end-to-end
-student experience, and published the solution to **Microsoft Teams and
-Microsoft Copilot**. The resulting pattern provides students with a
-single conversational entry point while ensuring requests are handled
-using the appropriate data, knowledge, and approval processes.
+You connected the two agents, added an agent flow that submits bonafide
+certificate requests after the student confirms, and published Atlas to
+a demo website channel to validate the student experience from request
+to flow run.
